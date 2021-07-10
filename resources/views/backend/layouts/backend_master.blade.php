@@ -14,8 +14,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('backend')}}/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css -->
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('backend')}}/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -154,9 +158,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{asset('backend')}}/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                <img src="{{asset('backend')}}/img/AdminLTELogo.png" alt="D"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light text-white"> Dashboard</span>
             </a>
 
             <!-- Sidebar -->
@@ -168,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Ariful Islam</a>
                     </div>
                 </div>
 
@@ -179,18 +183,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="#" class="nav-link active ">
+                                <i class="nav-icon fas fa-tachometer-alt "></i>
                                 <p>
-                                    Starter Pages
+                                    All Blog Items in Dashboard
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                    <a href="{{ route('category.index')}}" class="nav-link active">
+                                        <i class="fas fa-label nav-icon"></i>
+                                        <p>Category list</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -270,10 +274,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- jQuery -->
     <script src="{{asset('backend')}}/jquery/jquery.min.js"></script>
+    <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="{{asset('backend')}}/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('backend')}}/js/adminlte.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has("success"))
+        // <div class="alert alert-success">
+            toastr.success("{{ Session::get('success') }}");
+            // </div>
+        @endif
+
+    </script>
 </body>
 
 </html>
