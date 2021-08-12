@@ -158,8 +158,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{asset('backend')}}/img/AdminLTELogo.png" alt="D"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{asset('backend')}}/img/AdminLTELogo.png" alt="D" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light text-white"> Dashboard</span>
             </a>
 
@@ -201,6 +201,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a href="{{ route('tag.index')}}" class="nav-link">
                                         <i class="far fa-tag nav-icon"></i>
                                         <p>Tags</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('post.index')}}" class="nav-link">
+                                        <i class="far fa-tag nav-icon"></i>
+                                        <p>Posts</p>
                                     </a>
                                 </li>
                             </ul>
@@ -277,18 +283,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="{{asset('backend')}}/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="{{asset('backend')}}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> -->
+    <script src="{{asset('backend')}}/backend/plugins/bs-custom-file-input/bs-custom-file-input.js"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('backend')}}/js/adminlte.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
-        @if(Session::has("success"))
-        // <div class="alert alert-success">
-            toastr.success("{{ Session::get('success') }}");
-            // </div>
-        @endif
+    @if(Session::has("success"))
+    // <div class="alert alert-success">
+    toastr.success("{{ Session::get('success') }}");
+    // </div>
+    @endif
 
+    // $document.ready(function() {
+    //     bsCustomFileInput.init();
+    // })
+
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
     </script>
+    <!-- <script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script> -->
 </body>
 
 </html>
